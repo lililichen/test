@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        name：<input type="text" id="name">
+    </div>
+    <div>
+        content：<input type="text" id="content">
+    </div>
+    <div>
+        <input type="button" value="add" id="addBtn">
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script>
+        $("#addBtn").click(() => {
+            const date = new Date;
+            $.ajax({
+                url:"/users/addUser",
+                type: 'post',
+                data: {
+                    name: $("#name").val(),
+                    content: $("#content").val(),
+                    time: date.toLocaleString()
+                },
+                success(msg) {
+                    console.log(msg);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
